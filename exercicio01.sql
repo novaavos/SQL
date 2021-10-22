@@ -1,19 +1,25 @@
-create database db_acervo35;
+create database db_RH;
 
-use db_acervo35;
-create table tb_usuario(
-	nome varchar(35) not null,
-    id_usuario bigint auto_increment,
+use db_RH;
+create table tb_funcionarios(
+	id_funcionario bigint auto_increment,
+    nome varchar(35) not null,
     email varchar(35) not null,
-    nascimento_data date,
-    senha varchar(20) not null,
-    primary key(id_usuario)
+    salario decimal(10,2) not null,
+    cargo varchar(35) not null,
+    primary key(id_funcionario)
 );
 
-insert into tb_usuario(nome, email, nascimento_data, senha) values ("Avos", "email@email.com", '1996-05-29', "root");
+insert into tb_funcionarios(nome, email, salario,cargo) values ("Gustavo", "email1@email.com", 1000.00, "Vendedor");
+insert into tb_funcionarios(nome, email, salario,cargo) values ("Dri", "email2@email.com", 10000.00, "Gerente");
+insert into tb_funcionarios(nome, email, salario,cargo) values ("Jeff", "email3@email.com", 1000.00, "Vendedor");
+insert into tb_funcionarios(nome, email, salario,cargo) values ("Leo", "email4@email.com", 1000.00, "Vendedor");
+insert into tb_funcionarios(nome, email, salario,cargo) values ("Camilla", "email5@email.com", 1000.00, "Vendedor");
 
-select * from tb_usuario;
+select * from tb_funcionarios where salario > 2000.00;
 
-update `db_acervo35`.`tb_usuario` set `senha`='333' where(`id_usuario`='2');
+select * from tb_funcionarios where salario < 2000.00;
 
-alter table tb_usuario add livro varchar(35);
+update db_rh.tb_funcionarios set salario=3000.00 where(id_funcionario=2);
+
+select * from tb_funcionarios;
